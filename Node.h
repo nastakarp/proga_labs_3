@@ -13,6 +13,7 @@ struct Node {
 
     int findMinimum();
     void printListToFile(std::ofstream &output);
+    void printListToLog(std::ofstream& log);
 };
 
 #endif //PROGA_LAB3_NODE_H

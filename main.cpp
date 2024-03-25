@@ -12,13 +12,13 @@ const int MAX_LENGTH = 512;
 
 MarkerText readTextFromFile(fstream &input) {
     char marker;
-    input.get(marker);
+    //input.get(marker);
 
     int length = 0;
     auto *strings = new MarkerString[MAX_LENGTH];
 
     char symbol;
-    input.get(symbol);
+    //input.get(symbol);
     while (input.get(symbol)) {
         int index = 0;
         char *chars = new char[MAX_LENGTH];
@@ -26,7 +26,7 @@ MarkerText readTextFromFile(fstream &input) {
         while (input.get(symbol) && symbol != '\n') chars[index++] = symbol;
         chars[index] = '\0';
         strings[length].chars = chars;
-        strings[length].marker = marker;
+        //strings[length].marker = marker;
         length++;
     }
 
@@ -89,6 +89,7 @@ void deleteMinimumNodes(Node*& head) {
 int main() {
     fstream input("input.txt", ios::in);
     ofstream output("output.txt", ios::out);
+    ofstream log("log.txt", ios::out);
 
     if (!input.is_open()) {
         output << "Не удалось открыть файл input.txt" << endl;
@@ -103,9 +104,9 @@ int main() {
     MarkerText text = readTextFromFile(input);
 
     Node* head = createListFromText(text);
+    head->printListToLog(log);
     deleteMinimumNodes(head);
     head->printListToFile(output);
-
     input.close();
     output.close();
 }

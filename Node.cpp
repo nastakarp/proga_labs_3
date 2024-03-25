@@ -37,3 +37,18 @@ void Node::printListToFile(std::ofstream& output) {
     }
     output << std::endl;
 }
+// Функция для вывода списка в файл
+void Node::printListToLog(std::ofstream& log) {
+    const Node* current = this;
+    log<<"Head\n"
+        <<" | " << "\n"
+        <<"\\|/ " << "\n";
+
+    while (current) {
+
+        log << current->data.chars << std::endl;
+        log<<" | \n"<<"\\|/ " << "\n";
+        current = current->next;
+    }
+    log <<"nullptr" << "\n";
+}
