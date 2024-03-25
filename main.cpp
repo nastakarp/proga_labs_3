@@ -59,9 +59,7 @@ int main() {
     output<<"Карпенко Анастасия\n";
     output<<"3. Удалить:\n14) элементы, содержащие самые минимальные подэлементы (по длине слов);\n";
     MarkerText text = readTextFromFile(input);
-    Node* head = Node createListFromText(text);
-    Node printListToFile(head, output);
-
+    
     input.close();
     output.close();
 }
