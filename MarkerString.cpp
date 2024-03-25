@@ -29,6 +29,7 @@ int MarkerString::longest_length() const {
     }
     return result;
 }
+
 int MarkerString::smallest_length() const {
     int result = 512; // Начальное значение
     int current = 0;
@@ -47,7 +48,7 @@ int MarkerString::smallest_length() const {
         index++;
     }
     // Проверяем длину последнего слова после выхода из цикла
-    if (current < result) {
+    if (current > 0 && current < result) {
         result = current;
     }
     return result;

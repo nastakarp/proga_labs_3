@@ -11,7 +11,7 @@ struct Node {
 
     Node(const MarkerString &value);
 
-    int findMinimum(const Node* head);
+    int findMinimum();
     void printListToFile(std::ofstream &output);
 };
 
