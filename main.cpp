@@ -10,7 +10,6 @@ const int MAX_LENGTH = 512;
 #include "Node.h"
 
 
-
 MarkerText readTextFromFile(fstream &input) {
     char marker;
     input.get(marker);
@@ -61,6 +60,32 @@ Node* createListFromText(const MarkerText& text) {
     return head;
 }
 
+// Функция для удаления всех узлов с минимальным значением из списка
+void deleteMinimumNodes(Node*& head) {
+    // Проверка, что список не пустой
+    if (!head) {
+        std::cerr << "List is empty!" << std::endl;
+        return;
+    }
+
+    int minVal = head->findMinimum();
+
+    // Удаляем все узлы с минимальным значением из начала списка
+    while (head && head->data.smallest_length() == minVal) {
+        head = head->next;
+    }
+
+    // Удаляем все узлы с минимальным значением, кроме начального, из остальной части списка
+    Node* current = head;
+    while (current && current->next) {
+        if (current->next->data.smallest_length() == minVal) {
+            current->next = current->next->next;
+        } else {
+            current = current->next;
+        }
+    }
+}
+
 int main() {
     fstream input("input.txt", ios::in);
     ofstream output("output.txt", ios::out);
@@ -78,6 +103,7 @@ int main() {
     MarkerText text = readTextFromFile(input);
 
     Node* head = createListFromText(text);
+    deleteMinimumNodes(head);
     head->printListToFile(output);
 
     input.close();
