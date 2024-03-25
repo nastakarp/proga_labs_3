@@ -6,24 +6,6 @@
 // Конструктор для инициализации узла с заданными данными и указателем на следующий узел
 Node::Node(const MarkerString& value) : data(value), next(nullptr) {}
 
-// Функция для создания списка из данных, считанных из файла
-Node* createListFromText(const MarkerText& text) {
-    Node* head = nullptr; // Указатель на начало списка
-    Node* tail = nullptr; // Указатель на конец списка
-
-    for (int i = 0; i < text.length; ++i) {
-        Node* newNode = new Node(text.strings[i]);
-        if (!head) {
-            head = newNode;
-            tail = newNode;
-        } else {
-            tail->next = newNode;
-            tail = newNode;
-        }
-    }
-    return head;
-}
-
 int Node::findMinimum(const Node* head) {
     // Проверка, что список не пустой
     if (!head) {
@@ -47,8 +29,8 @@ int Node::findMinimum(const Node* head) {
 }
 
 // Функция для вывода списка в файл
-void Node::printListToFile(const Node* head, std::ofstream& output) {
-    const Node* current = head;
+void Node::printListToFile(std::ofstream& output) {
+    const Node* current = this;
     while (current) {
         output << current->data.chars << std::endl;
         current = current->next;

@@ -43,6 +43,23 @@ MarkerText readTextFromFile(fstream &input) {
 }
 // Определение класса для узла списка
 
+// Функция для создания списка из данных, считанных из файла
+Node* createListFromText(const MarkerText& text) {
+    Node* head = nullptr; // Указатель на начало списка
+    Node* tail = nullptr; // Указатель на конец списка
+
+    for (int i = 0; i < text.length; ++i) {
+        Node* newNode = new Node(text.strings[i]);
+        if (!head) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail->next = newNode;
+            tail = newNode;
+        }
+    }
+    return head;
+}
 
 int main() {
     fstream input("input.txt", ios::in);
@@ -56,10 +73,13 @@ int main() {
         output << "Файл input.txt пуст" << std::endl;
         throw std::runtime_error("Входной файл пуст");
     }
-    output<<"Карпенко Анастасия\n";
-    output<<"3. Удалить:\n14) элементы, содержащие самые минимальные подэлементы (по длине слов);\n";
+    //output<<"Карпенко Анастасия\n";
+    //output<<"3. Удалить:\n14) элементы, содержащие самые минимальные подэлементы (по длине слов);\n";
     MarkerText text = readTextFromFile(input);
-    
+
+    Node* head = createListFromText(text);
+    head->printListToFile(output);
+
     input.close();
     output.close();
 }

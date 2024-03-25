@@ -11,9 +11,8 @@ struct Node {
 
     Node(const MarkerString &value);
 
-    Node* createListFromText(MarkerText text);
     int findMinimum(const Node* head);
-    void printListToFile(const Node* head, std::ofstream &output);
+    void printListToFile(std::ofstream &output);
 };
 
 #endif //PROGA_LAB3_NODE_H
