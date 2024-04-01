@@ -10,7 +10,6 @@ struct MarkerText {
     int length;
 
     MarkerText();
-    void sort() const;
     ~MarkerText();
     void print(std::ofstream &output) const;
 };

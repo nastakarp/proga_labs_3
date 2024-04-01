@@ -16,19 +16,6 @@ MarkerString::MarkerString(const char* chars, char marker) {
     this->marker = marker;
 }
 
-int MarkerString::longest_length() const {
-    int result = 0;
-    int current = 0;
-
-    int index = 0;
-    while (this->chars[index] != marker && this->chars[index] != NULL_CHAR) {
-        if (this->chars[index] == ' ') current = 0;
-        else current++;
-        index++;
-        if (current > result) result = current;
-    }
-    return result;
-}
 
 int MarkerString::smallest_length() const {
     int result = 512; // Начальное значение

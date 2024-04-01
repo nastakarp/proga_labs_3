@@ -9,7 +9,6 @@ struct MarkerString {
 
     MarkerString();
     MarkerString(const char* chars, char marker);
-    int longest_length() const;
     int smallest_length() const;
     void printBeforeMarker(std::ofstream &output) const;
     ~MarkerString();

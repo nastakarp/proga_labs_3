@@ -11,7 +11,7 @@ const int MAX_LENGTH = 512;
 
 
 MarkerText readTextFromFile(fstream &input) {
-    char marker;
+    //char marker;
     //input.get(marker);
 
     int length = 0;
